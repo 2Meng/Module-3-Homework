@@ -84,8 +84,8 @@ function randomizePassword() {
   }
 
   for (var i = 0; i < passwordOptions.length; i++) {
-    var passwordCharacters = randomPass(passwordCharacters)
-    result.push(passwordCharacters);
+    var randomizeCharacters = randomPass(passwordCharacters)
+    result.push(randomizeCharacters);
   }
 
   for (var i = 0; i < actualPassCharacters.length; i++) {
