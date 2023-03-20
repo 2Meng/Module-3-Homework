@@ -22,7 +22,7 @@ function userPasswordOptions(){
   }
 
   var useSpecialCharacters = confirm ("Click the OK button to include special characters.")
-  var useNumberCharacters = confirm ("Click the OK button to include special characters.")
+  var useNumberCharacters = confirm ("Click the OK button to include number characters.")
   var useLowerCaseLetters = confirm ("Click the OK button to include lower case letters.")
   var useUpperCaseLetters = confirm ("Click the OK button to include upper case letters.")
 
