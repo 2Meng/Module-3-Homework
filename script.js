@@ -4,7 +4,7 @@ var lowerCaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "
 var upperCaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
 function userPasswordOptions(){
-  var length = prompt("How many characters would you like in your password?")
+  var length = parseInt(prompt("How many characters would you like in your password?"), 10)
 
   if (Number.isNaN(length)){
     alert("Please provide a number.")
@@ -45,33 +45,47 @@ function userPasswordOptions(){
   return usersPassword;
 }
 
+function randomPass(arr) {
+  var randomCharacters = Math.floor(Math.random() * arr.length)
+  var randomElement = arr[randomCharacters]
+
+  return randomElement;
+}
+
 function randomizePassword() {
   var passwordOptions = userPasswordOptions()
 
-  var outcome = []
+  var result = []
 
   var passwordCharacters = []
 
   var actualPassCharacters = []
 
+  if (!passwordOptions) return null;
+
   if (passwordOptions.useSpecialCharacters) {
     passwordCharacters = passwordCharacters.concat(specialCharacters)
-    actualPassCharacters.push(getRandom(specialCharacters))
+    actualPassCharacters.push(randomPass(specialCharacters));
   }
 
   if (passwordOptions.useNumberCharacters) {
     passwordCharacters = passwordCharacters.concat(numberCharacters)
-    actualPassCharacters = push(getRandom(numberCharacters))
+    actualPassCharacters.push(randomPass(numberCharacters));
   }
 
   if (passwordOptions.useLowerCaseLetters) {
     passwordCharacters = passwordCharacters.concat(lowerCaseLetters)
-    actualPassCharacters = push(getRandom(lowerCaseLetters))
+    actualPassCharacters.push(randomPass(lowerCaseLetters));
   }
 
   if (passwordOptions.useUpperCaseLetters) {
     passwordCharacters = passwordCharacters.concat(upperCaseLetters)
-    actualPassCharacters = push(getRandom(upperCaseLetters))
+    actualPassCharacters.push(randomPass(upperCaseLetters));
+  }
+
+  for (var i = 0; i < passwordOptions.length; i++) {
+    var passwordCharacters = randomPass(passwordCharacters)
+    result.push(passwordCharacters);
   }
 
   for (var i = 0; i < actualPassCharacters.length; i++) {
@@ -87,7 +101,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var password = randomizePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
